@@ -1,0 +1,605 @@
+version: "3.1"
+
+nlu:
+- regex: experience_years
+  examples: |
+    - \b\d{1,2}(?:[\.,]\d)?\s*(?:\+)?\s*(?:год|года|лет|г\.)\b
+    - \b\d{1,2}\s*(?:мес|месяц|месяца|месяцев|мес\.)\b
+    - \bпол\s?года\b
+    - \bоколо\s+\d{1,2}\s+лет\b
+    - \bболее\s+\d{1,2}\s+лет\b
+
+- regex: salary_expectation
+  examples: |
+    - \b\d{1,3}(?:\s?\d{1,3})?\s?(?:k|к|тыс|тысяч)\b
+    - \b\d{1,3}(?:\s?\d{1,3})?\s?(?:₽|руб|рублей|р\.)?\b
+    - \b\d(?:[\.,]\d)?\s?(?:млн|million)\b
+    - \b\d{1,3}(?:\s?\d{1,3})?\s?(?:-|–|—)\s?\d{1,3}(?:\s?\d{1,3})?\s?(?:k|к|тыс|тысяч)\b
+    - \b(?:от|до|около|более|менее)\s+\d{1,3}(?:\.\d{1,3})?\s*(?:тыс|к|руб)\b
+
+- lookup: role
+  examples: |
+    project manager
+    product manager
+    product owner
+    data analyst
+    data engineer
+    data scientist
+    mlops engineer
+    devops engineer
+    site reliability engineer
+    sre
+    pm
+    prodact
+    product
+    da
+    de
+    ds
+    mlops
+    devops
+    девопс
+    девопс инженер
+    продакт
+    продакт менеджер
+    продукт менеджер
+    менеджер продукта
+    проджект менеджер
+    проджект
+    проджэкт
+    проджэкт менеджер
+    руководитель проекта
+    аналитик данных
+    дата аналитик
+    дата инженер
+    инженер данных
+    дата саентист
+    дата саенс
+    mlops инженер
+    sre инженер
+    po
+    scrum master
+
+- lookup: work_format
+  examples: |
+    удаленка
+    удалёнка
+    удаленно
+    remote
+    full remote
+    полная удаленка
+    гибрид
+    hybrid
+    офис
+    office
+    гибкий
+    flexible
+    flex
+    фуллтайм
+    full-time
+    полный день
+    part-time
+    частичная занятость
+    неполный день
+    контракт
+    проектная работа
+    в офисе
+    из дома
+
+- lookup: skills
+  examples: |
+    python
+    питон
+    sql
+    скл
+    скьюэль
+    postgresql
+    mysql
+    clickhouse
+    машинное обучение
+    ml
+    глубокое обучение
+    dl
+    нейросети
+    статистика
+    nlp
+    обработка текста
+    анализ данных
+    визуализация
+    etl
+    airflow
+    spark
+    kafka
+    docker
+    докер
+    kubernetes
+    кубер
+    mlflow
+    fastapi
+    django
+    flask
+    power bi
+    tableau
+    excel
+    jira
+    scrum
+    agile
+    linux
+    git
+    ci/cd
+    jenkins
+    gitlab ci
+    github actions
+    гитхаб экшнс
+    terraform
+    ansible
+    aws
+    gcp
+    azure
+    rest api
+    pandas
+    numpy
+    pytorch
+    tensorflow
+    keras
+    коммуникация
+    управление проектами
+    a/b тесты
+    ab тесты
+    product management
+    leadership
+    team lead
+    тимлид
+
+- synonym: project manager
+  examples: |
+    product manager
+    product owner
+    продукт менеджер
+    продакт
+    продакт менеджер
+    менеджер продукта
+    проджект менеджер
+    руководитель проекта
+    pm
+    проджэкт
+    po
+
+- synonym: data scientist
+  examples: |
+    ds
+    data science
+    дата саентист
+    дата саенс
+    дс
+
+- synonym: data engineer
+  examples: |
+    de
+    дата инженер
+    инженер данных
+    де
+
+- synonym: data analyst
+  examples: |
+    da
+    аналитик данных
+    дата аналитик
+    да
+
+- synonym: mlops engineer
+  examples: |
+    devops
+    devops engineer
+    девопс
+    девопс инженер
+    site reliability engineer
+    sre
+    sre инженер
+    mlops
+    mlops инженер
+
+- synonym: удаленка
+  examples: |
+    удаленно
+    remote
+    full remote
+    удалёнка
+
+- synonym: гибрид
+  examples: |
+    hybrid
+
+- synonym: офис
+  examples: |
+    office
+
+- synonym: гибкий
+  examples: |
+    flexible
+    flex
+    part-time
+    частичная занятость
+    контракт
+    проектная работа
+    неполный день
+
+- synonym: python
+  examples: |
+    питон
+    пайтон
+    py
+
+- synonym: sql
+  examples: |
+    скьюэль
+    эскуэль
+    скл
+
+- synonym: docker
+  examples: |
+    докер
+    док
+
+- synonym: kubernetes
+  examples: |
+    кубер
+    k8s
+    кубернетес
+
+- synonym: github actions
+  examples: |
+    github actions
+    гитхаб экшнс
+    gitlab ci
+
+
+- intent: start_screening
+  examples: |
+    - Хочу пройти скрининг на [Data Scientist](role).
+    - Готов на первичное интервью по [Data Engineer](role).
+    - Давайте стартанем скрин на [Data Analyst](role).
+    - Я кандидат на [MLOps Engineer](role), погнали.
+    - Можно пройти отбор на [Project Manager](role)?
+    - Хай, хочу в команду как [DS](role).
+    - Запусти скрининг на роль [DE](role).
+    - Иду на [DA](role), готов отвечать.
+    - Давай интервью на [PM](role).
+    - Можно сразу на [MLOps](role) собес?
+    - Хочу чекнуть шансы на [Data Scientist](role).
+    - Запишите меня на скрин по [Data Engineer](role).
+    - Стартуем, цель — [Data Analyst](role).
+    - Я подаюсь на [Project Manager](role), начинаем.
+    - Нужен первичный этап на [MLOps Engineer](role).
+    - Хочу пройти мини-интервью как [Product Manager](role).
+    - Можем начать скрининг по [DevOps](role)?
+    - Давай быстренько пройду отбор на [продукт менеджер](role).
+    - Погнали, я на [девопс](role).
+    - Готов к скринингу на [sre](role).
+    - Хочу на собес как [Product Owner](role).
+    - Стартанем отбор на [менеджер продукта](role).
+    - Поехали на интервью по [Site Reliability Engineer](role).
+    - Начнем скрининг, роль [mlops инженер](role).
+    - Хочу пройти первичку по [продакт](role).
+    - Подаюсь на собес как [проджэкт](role).
+    - Хочу на интервью по [дата саенс](role).
+
+- intent: inform_role
+  examples: |
+    - Моя роль [Data Scientist](role).
+    - Иду на позицию [Data Engineer](role).
+    - Целюсь в [Data Analyst](role).
+    - Хочу на [MLOps Engineer](role).
+    - Рассматриваю [Project Manager](role).
+    - По роли это [DS](role).
+    - Я [DE](role), если коротко.
+    - Мой вариант — [DA](role).
+    - По сути я [PM](role).
+    - Основная цель — [MLOps](role).
+    - В вакансии укажите [Data Scientist](role).
+    - Зафиксируйте роль [Data Engineer](role).
+    - Давайте собеседование на [Data Analyst](role).
+    - Профиль ближе к [Project Manager](role).
+    - Хочу интервью как [MLOps Engineer](role).
+    - Я откликаюсь на [Data Scientist](role) в ML-команду.
+    - Для скрина выбираю [Data Engineer](role).
+    - Позиция: [Data Analyst](role).
+    - Роль в проекте вижу как [Project Manager](role).
+    - Моя целевая должность — [MLOps Engineer](role).
+    - По факту я [Product Manager](role).
+    - Я скорее [Product Owner](role).
+    - Моя роль [продукт менеджер](role).
+    - Записывай как [продакт](role).
+    - Вообще я [DevOps](role).
+    - Скорее [DevOps Engineer](role).
+    - Если по рынку, то [девопс](role).
+    - Ближе всего [SRE](role).
+    - Я [Site Reliability Engineer](role).
+    - Можно указать [менеджер продукта](role).
+    - Пишите роль как [проджэкт](role).
+    - По факту я [дата саенс](role).
+
+- intent: inform_experience_years
+  examples: |
+    - У меня [1 год](experience_years) опыта.
+    - В роли уже [2 года](experience_years).
+    - Опыт примерно [3 года](experience_years).
+    - Работаю в теме [4 года](experience_years).
+    - По факту [5 лет](experience_years).
+    - У меня [6 лет](experience_years) релевантного опыта.
+    - В индустрии [7 лет](experience_years).
+    - Накопилось [8 лет](experience_years) практики.
+    - Коммерчески [9 лет](experience_years).
+    - Всего [10 лет](experience_years).
+    - Где-то [11 лет](experience_years), если честно.
+    - Уже [12 лет](experience_years) в профессии.
+    - Около [13 лет](experience_years) опыта.
+    - В сумме [14 лет](experience_years).
+    - Стаж [15 лет](experience_years).
+    - По резюме [16 лет](experience_years).
+    - У меня [17 лет](experience_years) в этом направлении.
+    - Практики [18 лет](experience_years).
+    - Релевантно [19 лет](experience_years).
+    - Сильно давно, где-то [20 лет](experience_years).
+    - Коммерческого опыта [1.5 года](experience_years).
+    - У меня [2.5 года](experience_years), если считать только профиль.
+    - Примерно [3+ года](experience_years) в этой роли.
+    - Релевантно [4+ года](experience_years) опыта.
+    - Сейчас около [0.5 года](experience_years), но быстро расту.
+    - Коммерческого опыта [6 месяцев](experience_years).
+    - У меня [18 месяцев](experience_years) в продукте.
+    - В айти пока [полгода](experience_years).
+    - Опыт где-то [пол года](experience_years), если честно.
+    - Итого [1 год 6 месяцев](experience_years) релевантного опыта.
+    - Имею [пол года](experience_years) в аналитике.
+    - В аналитике пока [полгода](experience_years).
+    - У меня [6 месяцев](experience_years) в аналитике данных.
+
+- intent: inform_skills
+  examples: |
+    - Навыки: [Python](skills), [машинное обучение](skills), [статистика](skills).
+    - Мой стек: [Python](skills), [SQL](skills), [ETL](skills).
+    - Работаю с [Airflow](skills), [Spark](skills), [Kafka](skills).
+    - По продакшену: [Docker](skills), [Kubernetes](skills), [MLflow](skills).
+    - Аналитика: [анализ данных](skills), [Power BI](skills), [Excel](skills).
+    - Из ML: [глубокое обучение](skills), [NLP](skills), [Python](skills).
+    - Визуализация: [Tableau](skills), [Power BI](skills), [Excel](skills).
+    - Из управления: [управление проектами](skills), [Agile](skills), [Scrum](skills).
+    - По процессам: [Jira](skills), [Scrum](skills), [коммуникация](skills).
+    - Бэкенд и MLOps: [FastAPI](skills), [Docker](skills), [Linux](skills).
+    - Если коротко: [Python](skills), [SQL](skills), [Spark](skills).
+    - Хардскиллы: [машинное обучение](skills), [статистика](skills), [A/B тесты](skills).
+    - Практика в [обработка текста](skills), [NLP](skills), [MLflow](skills).
+    - Работаю используя [Git](skills), [Linux](skills), [Docker](skills).
+    - Любимый стек: [Python](skills), [анализ данных](skills), [Tableau](skills).
+    - По DE силен в [ETL](skills), [Airflow](skills), [Kafka](skills).
+    - По DS чаще всего [Python](skills), [глубокое обучение](skills), [NLP](skills).
+    - По DA: [SQL](skills), [Power BI](skills), [A/B тесты](skills).
+    - Могу в [Kubernetes](skills), [MLflow](skills), [FastAPI](skills).
+    - В целом: [Python](skills), [SQL](skills), [коммуникация](skills).
+    - На постоянной основе использую: [PostgreSQL](skills), [Python](skills), [Git](skills).
+    - В проде использую [CI/CD](skills), [Jenkins](skills), [Docker](skills).
+    - Из облаков знаю: [AWS](skills), [GCP](skills), [Azure](skills).
+    - Инфра: [Terraform](skills), [Ansible](skills), [Kubernetes](skills).
+    - По API: [REST API](skills), [FastAPI](skills), [Django](skills).
+    - Для дата-пайплайнов: [Airflow](skills), [ClickHouse](skills), [Kafka](skills).
+    - Для аналитики: [SQL](skills), [Tableau](skills), [Power BI](skills).
+    - По ML: [PyTorch](skills), [TensorFlow](skills), [NumPy](skills).
+    - По Python-экосистеме: [Pandas](skills), [NumPy](skills), [Flask](skills).
+    - Если совсем неформально: [питон](skills), [скьюэль](skills), [докер](skills).
+    - По инфраструктуре:  [Terraform](skills), [AWS](skills).
+    - Автоматизация через [гитхаб экшнс](skills), [Docker](skills), [Kubernetes](skills).
+
+- intent: inform_salary_expectation
+  examples: |
+    - По зарплате хочу [150000](salary_expectation) рублей.
+    - Ожидаю [180000](salary_expectation) в месяц.
+    - Мне ок [200000](salary_expectation).
+    - Рассчитываю на [220000](salary_expectation).
+    - Вилка от [250000](salary_expectation).
+    - Комфортно [280000](salary_expectation).
+    - Ожидание [300000](salary_expectation) руб.
+    - Хочу где-то [320000](salary_expectation).
+    - Цель по доходу [350000](salary_expectation).
+    - Если честно, хочу [400000](salary_expectation).
+    - Можно рассматривать от [180k](salary_expectation).
+    - По деньгам ориентир [200k](salary_expectation).
+    - Хочу около [220k](salary_expectation).
+    - Норм будет [250k](salary_expectation).
+    - Рассматриваю [300k](salary_expectation) net.
+    - Ниже [320k](salary_expectation) не очень интересно.
+    - Оптимально [350k](salary_expectation).
+    - В идеале [400k](salary_expectation).
+    - Ориентир [450k](salary_expectation).
+    - Максимально хочется [500k](salary_expectation).
+    - На руки хочу [270к](salary_expectation).
+    - По gross нормально [320к](salary_expectation).
+    - По рынку хочу [0.4 млн](salary_expectation).
+    - Комфортная вилка [1 млн](salary_expectation) при релокации.
+    - Давайте стартуем с [230 тысяч](salary_expectation).
+    - [зп 250 на руки](salary_expectation).
+    - Хочу [250к чистыми](salary_expectation).
+    - Рассматриваю [300к до вычета](salary_expectation).
+    - Ожидаю [280к после налогов](salary_expectation).
+    - По вилке хочу [240-280 тысяч](salary_expectation).
+    - По деньгам ок [240-280к на руки](salary_expectation).
+    - Диапазон [240-280к грязными](salary_expectation).
+    - Если по рынку, то [250-320k gross](salary_expectation).
+
+- intent: inform_work_format
+  examples: |
+    - Предпочитаю [удаленка](work_format).
+    - Для меня лучше [гибрид](work_format).
+    - Ок только [офис](work_format).
+    - Хочу [гибкий](work_format) график.
+    - Мне комфортнее [удаленно](work_format).
+    - Рассматриваю [remote](work_format).
+    - Норм вариант — [hybrid](work_format).
+    - Больше нравится [office](work_format).
+    - Я за [удаленка](work_format), так продуктивнее.
+    - Могу работать в [гибрид](work_format).
+    - Если что, готов и в [офис](work_format).
+    - Нужен скорее [гибкий](work_format) формат.
+    - По формату выберу [удаленка](work_format).
+    - Для меня приоритет [гибрид](work_format).
+    - Хочу фулл [remote](work_format).
+    - Давайте [office](work_format), если команда там.
+    - Оптимально [удаленно](work_format), без проблем.
+    - Лучше [гибрид](work_format), 2-3 дня в офисе.
+    - Формат хочу [гибкий](work_format), так удобнее.
+    - В целом подойдет [офис](work_format).
+    - Предпочитаю [onsite](work_format), мне так проще.
+    - Можно [on-site](work_format), если офис близко.
+    - Я за [full remote](work_format).
+    - Мне подходит [part-time](work_format).
+    - По занятости лучше [контракт](work_format).
+
+- intent: request_skills_menu
+  examples: |
+    - Покажи меню навыков по [Python](skills).
+    - Можно выбрать скиллы кнопками для [SQL](skills)?
+    - Дай список навыков для выбора, начнем с [Docker](skills).
+    - Открой варианты скиллов по [Kubernetes](skills).
+    - Покажи, что можно нажать по навыкам типа [Airflow](skills).
+    - Хочу выбрать навыки из списка, например [Spark](skills).
+    - Скинь кнопки со скиллами для [Power BI](skills).
+    - Покажи готовые навыки по [NLP](skills).
+    - Давай меню по навыкам [MLflow](skills).
+    - Можно список скиллов, хочу [Terraform](skills).
+    - Хочу тыкнуть навыки кнопками, нужен [AWS](skills).
+    - Дай быстрый выбор скиллов для [GCP](skills).
+    - Открой подбор навыков по [Jira](skills).
+    - Чекни список навыков, нужен [Scrum](skills).
+    - Где кнопки выбора навыков типа [Git](skills)?
+    - Хочу выбрать скиллы без текста, начнем с [FastAPI](skills).
+    - Покажи мне сетку навыков для [PostgreSQL](skills).
+    - Нужен выбор навыков в один клик по [CI/CD](skills).
+    - Давай готовые кнопки по стеку [PyTorch](skills).
+    - Подскажи список навыков для нажатия: [TensorFlow](skills).
+
+- intent: provide_full_profile
+  examples: |
+    - Иду на [Data Scientist](role), опыт [3 года](experience_years), навыки [Python](skills), [машинное обучение](skills), [NLP](skills), ожидание [280000](salary_expectation), формат [удаленка](work_format).
+    - Рассматриваю [Data Engineer](role), стаж [4 года](experience_years), стек [Python](skills), [SQL](skills), [Spark](skills), зарплата [300000](salary_expectation), формат [гибрид](work_format).
+    - Целевая роль [Data Analyst](role), опыт [2 года](experience_years), навыки [SQL](skills), [Power BI](skills), [Excel](skills), ожидание [200000](salary_expectation), формат [офис](work_format).
+    - Я [MLOps Engineer](role), опыт [5 лет](experience_years), навыки [Docker](skills), [Kubernetes](skills), [MLflow](skills), хочу [350000](salary_expectation), формат [гибкий](work_format).
+    - Позиция [Project Manager](role), стаж [6 лет](experience_years), навыки [управление проектами](skills), [Agile](skills), [Jira](skills), компенсация [300000](salary_expectation), формат [гибрид](work_format).
+    - На [DS](role) с опытом [1 год](experience_years), умею [Python](skills), [статистика](skills), [обработка текста](skills), зарплата [180000](salary_expectation), формат [удаленка](work_format).
+    - Иду как [DE](role), опыт [3 года](experience_years), навыки [ETL](skills), [Airflow](skills), [Kafka](skills), хочу [280k](salary_expectation), формат [remote](work_format).
+    - Рассматриваю [DA](role), опыт [4 года](experience_years), навыки [анализ данных](skills), [Tableau](skills), [A/B тесты](skills), ожидание [250k](salary_expectation), формат [hybrid](work_format).
+    - На роль [PM](role), опыт [7 лет](experience_years), навыки [Scrum](skills), [Jira](skills), [коммуникация](skills), ожидание [320k](salary_expectation), как формат предпочитаю: [office](work_format).
+
+- intent: greet
+  examples: |
+    - Привет!
+    - Здравствуйте
+    - Добрый день
+    - Добрый вечер
+    - Доброе утро
+    - Хей
+    - Хай
+    - Приветствую
+    - Йоу
+    - Hello
+    - Hi
+
+- intent: goodbye
+  examples: |
+    - Пока
+    - До свидания
+    - Спасибо, пока
+    - До встречи
+    - Всего хорошего
+    - Выхожу
+    - Закончим на этом
+    - Bye
+    - Good bye
+
+- intent: bot_challenge
+  examples: |
+    - Ты бот?
+    - Ты человек или программа?
+    - Я разговариваю с роботом?
+    - Это автоматический ответ?
+    - Ты настоящий HR или чат-бот?
+    - Кто ты?
+    - Ты искусственный интеллект?
+    - Are you a bot?
+
+- intent: ask_capabilities
+  examples: |
+    - Что ты умеешь?
+    - Что ты умеешь делать?
+    - Чем ты можешь помочь?
+    - Какой у тебя функционал?
+    - Что ты можешь?
+    - Расскажи о себе
+    - Для чего ты нужен?
+    - Как ты работаешь?
+    - Что происходит в этом чате?
+    - Зачем ты здесь?
+    - Помоги мне понять, что тут можно делать
+
+- intent: ask_available_roles
+  examples: |
+    - Какие роли у вас есть?
+    - На какие позиции вы нанимаете?
+    - Что за вакансии открыты?
+    - Какие должности доступны?
+    - Перечисли открытые позиции
+    - Какие вакансии есть в команде?
+    - Что за команда, куда вы берёте людей?
+    - На кого вы ищете специалистов?
+    - Расскажи про вакансии
+
+- intent: affirm
+  examples: |
+    - Да
+    - Да, верно
+    - Именно
+    - Так и есть
+    - Конечно
+    - Всё правильно
+    - Подтверждаю
+    - Ага
+    - Угу
+    - Точно
+    - Yep
+    - Yes
+
+- intent: deny
+  examples: |
+    - Нет
+    - Не совсем
+    - Не верно
+    - Это не так
+    - Нет, ошибка
+    - Неправильно
+    - Совсем не так
+    - Нет, подожди
+    - Nope
+    - No
+
+- intent: restart
+  examples: |
+    - Начнём заново
+    - Начать сначала
+    - Перезапусти
+    - Сбрось всё
+    - Хочу начать с нуля
+    - Давай заново
+    - Restart
+    - Reset
+    - Стереть и начать заново
+
+- intent: out_of_scope
+  examples: |
+    - Расскажи анекдот
+    - Какая сегодня погода?
+    - Кто выиграл чемпионат?
+    - Сыграй со мной в игру
+    - Напиши стихотворение
+    - Какой курс доллара?
+    - Ты умеешь рисовать?
+    - Давай поговорим о чём-нибудь другом
+    - Что такое блокчейн?
+    - Порекомендуй фильм

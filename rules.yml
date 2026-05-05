@@ -1,0 +1,48 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Приветствие
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Прощание
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Вопрос — бот или человек
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Что умеешь делать
+  steps:
+  - intent: ask_capabilities
+  - action: utter_capabilities
+
+- rule: Какие роли доступны
+  steps:
+  - intent: ask_available_roles
+  - action: utter_available_roles
+
+- rule: Вне области
+  steps:
+  - intent: out_of_scope
+  - action: utter_default
+
+- rule: Рестарт
+  steps:
+  - intent: restart
+  - action: action_restart
