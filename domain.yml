@@ -1,0 +1,129 @@
+version: "3.1"
+
+intents:
+  - start_screening
+  - inform_role
+  - inform_experience_years
+  - inform_skills
+  - inform_salary_expectation
+  - inform_work_format
+  - provide_full_profile
+  - greet
+  - goodbye
+  - bot_challenge
+  - ask_capabilities
+  - ask_available_roles
+  - affirm
+  - deny
+  - restart
+  - out_of_scope
+  - request_skills_menu
+
+
+entities:
+  - role
+  - experience_years
+  - skills
+  - salary_expectation
+  - work_format
+
+slots:
+  role:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: role
+
+  experience_years:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: experience_years
+
+  skills:
+    type: list
+    mappings:
+      - type: from_entity
+        entity: skills
+
+  salary_expectation:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: salary_expectation
+
+  work_format:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: work_format
+
+
+responses:
+  utter_ask_role:
+    - text: "На какую роль вы претендуете?"
+
+  utter_ask_experience:
+    - text: "Сколько у вас опыта?"
+
+  utter_ask_skills:
+    - text: "Какие у вас ключевые навыки?"
+
+  utter_ask_salary:
+    - text: "Какие у вас зарплатные ожидания?"
+
+  utter_ask_format:
+    - text: "Какой формат работы вам подходит?"
+
+  utter_summary:
+    - text: |
+        Спасибо! Вот что я понял:
+        Роль: {role}
+        Опыт: {experience_years}
+        Навыки: {skills}
+        Зарплата: {salary_expectation}
+        Формат: {work_format}
+
+  utter_greet:
+    - text: "Привет! 👋 Я HR-бот ML-команды. Провожу первичный отбор на 5 позиций. Готовы начать?"
+
+  utter_goodbye:
+    - text: "До свидания! Удачи в поиске работы 🙂"
+
+  utter_iamabot:
+    - text: "Да, я чат-бот. Помогаю проводить первичный отбор кандидатов в ML-команду."
+
+  utter_capabilities:
+    - text: |
+        Я провожу первичное интервью для отбора в ML-команду.
+        Могу рассмотреть вас на одну из 5 ролей:
+        • Project Manager
+        • Data Analyst
+        • Data Engineer
+        • Data Scientist
+        • MLOps Engineer
+
+        Задам несколько вопросов про опыт, навыки и ожидания — и скажу, подходите ли вы на выбранную позицию.
+
+  utter_available_roles:
+    - text: |
+        Сейчас открыты следующие позиции:
+        1. 📋 Project Manager
+        2. 📊 Data Analyst
+        3. ⚙️ Data Engineer
+        4. 🤖 Data Scientist
+        5. 🚀 MLOps Engineer
+
+        На какую роль хотите подать заявку?
+
+  utter_default:
+    - text: "Это выходит за рамки нашего интервью. Давайте вернёмся к вакансиям? 🙂"
+
+  utter_ask_restart:
+    - text: "Хотите начать интервью заново?"
+  
+  utter_cheer_up:
+    - text: "Не переживайте, всё получится! 💪"
+  
+  utter_did_that_help:
+    - text: "Была ли информация полезной?"

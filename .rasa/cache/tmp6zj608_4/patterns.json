@@ -1,0 +1,42 @@
+[
+  {
+    "name": "experience_years",
+    "pattern": "\\b\\d{1,2}(?:[\\.,]\\d)?\\s*(?:\\+)?\\s*(?:год|года|лет|г\\.)\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\b\\d{1,2}\\s*(?:мес|месяц|месяца|месяцев|мес\\.)\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bболее\\s+\\d{1,2}\\s+лет\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bоколо\\s+\\d{1,2}\\s+лет\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bпол\\s?года\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b(?:от|до|около|более|менее)\\s+\\d{1,3}(?:\\.\\d{1,3})?\\s*(?:тыс|к|руб)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d(?:[\\.,]\\d)?\\s?(?:млн|million)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:-|–|—)\\s?\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:₽|руб|рублей|р\\.)?\\b"
+  }
+]

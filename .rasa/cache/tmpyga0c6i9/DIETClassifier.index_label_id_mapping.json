@@ -1,0 +1,19 @@
+{
+  "0": "affirm",
+  "1": "ask_available_roles",
+  "2": "ask_capabilities",
+  "3": "bot_challenge",
+  "4": "deny",
+  "5": "goodbye",
+  "6": "greet",
+  "7": "inform_experience_years",
+  "8": "inform_role",
+  "9": "inform_salary_expectation",
+  "10": "inform_skills",
+  "11": "inform_work_format",
+  "12": "out_of_scope",
+  "13": "provide_full_profile",
+  "14": "request_skills_menu",
+  "15": "restart",
+  "16": "start_screening"
+}

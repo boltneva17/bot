@@ -1,0 +1,21 @@
+version: "3.1"
+
+stories:
+
+- story: full screening
+  steps:
+  - intent: start_screening
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: utter_ask_skills
+  - intent: inform_skills
+  - action: utter_ask_salary
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+  - intent: inform_work_format
+  - action: utter_summary
+
+- story: fast track
+  steps:
+  - intent: provide_full_profile
+  - action: utter_summary
