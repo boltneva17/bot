@@ -1,91 +1,239 @@
-#### This file contains tests to evaluate that your bot behaves as expected.
-#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
 
 stories:
-- story: happy path 1
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
 
-- story: happy path 2
+# =========================
+# 1. DATA SCIENTIST — GOOD
+# =========================
+- story: good data scientist
   steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "data scientist"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "data scientist"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+  - action: utter_ask_skills_ds
+
+  - intent: inform_skills
+  - action: utter_ask_salary
+
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+
+  - intent: inform_work_format
+  - action: utter_summary
+
+  - action: action_evaluate_candidate
+
+
+# =========================
+# 2. DATA SCIENTIST — BAD
+# =========================
+- story: bad data scientist (no experience)
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "data scientist"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "data scientist"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+  - action: utter_ask_skills_ds
+
+  - intent: inform_skills
+  - action: utter_ask_salary
+
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+
+  - intent: inform_work_format
+  - action: utter_summary
+
+  - action: action_evaluate_candidate
+
+
+# =========================
+# 3. DATA ENGINEER
+# =========================
+- story: data engineer flow
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "data engineer"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "data engineer"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+  - action: utter_ask_skills_de
+
+  - intent: inform_skills
+  - action: utter_ask_salary
+
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+
+  - intent: inform_work_format
+  - action: utter_summary
+
+  - action: action_evaluate_candidate
+
+
+# =========================
+# 4. DATA ANALYST
+# =========================
+- story: data analyst flow
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "data analyst"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "data analyst"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+  - action: utter_ask_skills_da
+
+  - intent: inform_skills
+  - action: utter_ask_salary
+
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+
+  - intent: inform_work_format
+  - action: utter_summary
+
+  - action: action_evaluate_candidate
+
+
+# =========================
+# 5. PROJECT MANAGER
+# =========================
+- story: pm flow
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "project manager"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "project manager"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+  - action: utter_ask_skills_pm
+
+  - intent: inform_skills
+  - action: utter_ask_salary
+
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+
+  - intent: inform_work_format
+  - action: utter_summary
+
+  - action: action_evaluate_candidate
+
+
+# =========================
+# 6. MLOPS ENGINEER
+# =========================
+- story: mlops flow
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "mlops engineer"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "mlops engineer"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+  - action: utter_ask_skills_mlops
+
+  - intent: inform_skills
+  - action: utter_ask_salary
+
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+
+  - intent: inform_work_format
+  - action: utter_summary
+
+  - action: action_evaluate_candidate
+
+
+# =========================
+# 7. ROLE CHANGE MID FLOW
+# =========================
+- story: role switch during screening
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "data scientist"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "data scientist"
+
+  - action: utter_ask_experience
+
+  - intent: inform_experience_years
+
+  # пользователь меняет роль
+  - intent: inform_role
+    entities:
+      - entity: role
+        value: "mlops engineer"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "mlops engineer"
+
+  - action: utter_ask_skills_mlops
+
+
+# =========================
+# 8. GOODBYE MIDDLE FLOW
+# =========================
+- story: user leaves during screening
+  steps:
+  - intent: start_screening
+    entities:
+      - entity: role
+        value: "data analyst"
+
+  - action: action_set_role
+  - slot_was_set:
+      - role: "data analyst"
+
+  - action: utter_ask_experience
+
+  - intent: goodbye
   - action: utter_goodbye
-
-- story: sad path 1
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
-
-- story: sad path 3
-  steps:
-  - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
-
-- story: say goodbye
-  steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot

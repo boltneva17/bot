@@ -13,12 +13,10 @@ intents:
   - bot_challenge
   - ask_capabilities
   - ask_available_roles
-  - affirm
-  - deny
+  - affirm 
+  - deny     
   - restart
-  - out_of_scope
   - request_skills_menu
-
 
 entities:
   - role
@@ -30,100 +28,69 @@ entities:
 slots:
   role:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: role
-
   experience_years:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: experience_years
-
   skills:
     type: list
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: skills
-
   salary_expectation:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: salary_expectation
-
   work_format:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: work_format
 
-
 responses:
-  utter_ask_role:
-    - text: "На какую роль вы претендуете?"
-
+  utter_greet:
+    - text: "Привет! 👋 Я HR-бот. Провожу отбор на IT-позиции. На какую роль претендуете?"
   utter_ask_experience:
-    - text: "Сколько у вас опыта?"
-
-  utter_ask_skills:
-    - text: "Какие у вас ключевые навыки?"
-
+    - text: "Какой у вас опыт работы в годах?"
+  utter_ask_skills_pm:
+    - text: "Какие методологии управления вы знаете? (Scrum, Kanban, Jira)"
+  utter_ask_skills_da:
+    - text: "Ваш стек в аналитике? (SQL, Tableau, Python)"
+  utter_ask_skills_de:
+    - text: "Какие инструменты данных используете? (Airflow, Spark, Kafka)"
+  utter_ask_skills_ds:
+    - text: "Ваш ML-стек? (PyTorch, Sklearn, NLP/CV)"
+  utter_ask_skills_mlops:
+    - text: "Инструменты MLOps? (Docker, K8s, MLflow)"
   utter_ask_salary:
     - text: "Какие у вас зарплатные ожидания?"
-
   utter_ask_format:
-    - text: "Какой формат работы вам подходит?"
-
+    - text: "Какой формат работы удобен (удаленка, офис, гибрид)?"
   utter_summary:
-    - text: |
-        Спасибо! Вот что я понял:
-        Роль: {role}
-        Опыт: {experience_years}
-        Навыки: {skills}
-        Зарплата: {salary_expectation}
-        Формат: {work_format}
-
-  utter_greet:
-    - text: "Привет! 👋 Я HR-бот ML-команды. Провожу первичный отбор на 5 позиций. Готовы начать?"
-
+    - text: "Спасибо! Итого: Роль: {role}, Опыт: {experience_years}, Навыки: {skills}, ЗП: {salary_expectation}, Формат: {work_format}. Проверяю данные..."
   utter_goodbye:
-    - text: "До свидания! Удачи в поиске работы 🙂"
-
+    - text: "До свидания! Мы свяжемся с вами."
   utter_iamabot:
-    - text: "Да, я чат-бот. Помогаю проводить первичный отбор кандидатов в ML-команду."
-
-  utter_capabilities:
-    - text: |
-        Я провожу первичное интервью для отбора в ML-команду.
-        Могу рассмотреть вас на одну из 5 ролей:
-        • Project Manager
-        • Data Analyst
-        • Data Engineer
-        • Data Scientist
-        • MLOps Engineer
-
-        Задам несколько вопросов про опыт, навыки и ожидания — и скажу, подходите ли вы на выбранную позицию.
-
+    - text: "Я — искусственный интеллект, помогающий HR-команде."
   utter_available_roles:
-    - text: |
-        Сейчас открыты следующие позиции:
-        1. 📋 Project Manager
-        2. 📊 Data Analyst
-        3. ⚙️ Data Engineer
-        4. 🤖 Data Scientist
-        5. 🚀 MLOps Engineer
+    - text: "У нас открыты: Data Scientist, Data Engineer, Data Analyst, Project Manager, MLOps."
+  utter_capabilities:
+    - text: "Я могу провести первичное интервью и оценить твой профиль."
+  utter_skills_menu:
+    - text: "Вот популярные навыки: Python, SQL, Docker, Spark. Что из этого умеете?"
+  utter_default: # Добавлено, так как используется в сторисах
+    - text: "Извините, я не совсем понял. Давайте вернемся к интервью?"
 
-        На какую роль хотите подать заявку?
-
-  utter_default:
-    - text: "Это выходит за рамки нашего интервью. Давайте вернёмся к вакансиям? 🙂"
-
-  utter_ask_restart:
-    - text: "Хотите начать интервью заново?"
-  
-  utter_cheer_up:
-    - text: "Не переживайте, всё получится! 💪"
-  
-  utter_did_that_help:
-    - text: "Была ли информация полезной?"
+actions:
+  - action_set_role
+  - action_evaluate_candidate

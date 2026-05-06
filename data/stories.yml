@@ -1,21 +1,248 @@
+
+# version: "3.1"
+# stories:
+#   # 1. ПОЛНЫЙ СКРИНИНГ ПО РОЛЯМ
+#   - story: full screening — Data Scientist
+#     steps:
+#       - intent: start_screening
+#         entities:
+#           - entity: role
+#             value: "data scientist"
+#       - action: action_set_role
+#       - slot_was_set:
+#           - role: "data scientist"
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_ds
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   - story: full screening — Data Engineer
+#     steps:
+#       - intent: start_screening
+#         entities:
+#           - entity: role
+#             value: "data engineer"
+#       - action: action_set_role
+#       - slot_was_set:
+#           - role: "data engineer"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_de
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   - story: full screening — Data Analyst
+#     steps:
+#       - intent: start_screening
+#         entities:
+#          - entity: role
+#            value: "data analyst"
+#       - action: action_set_role
+#       - slot_was_set:
+#           - role: "data analyst"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_da
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   - story: full screening — Project Manager
+#     steps:
+#       - intent: start_screening
+#         entities:
+#          - entity: role
+#            value: "project manager"
+#       - action: action_set_role
+#       - slot_was_set:
+#           - role: "project manager"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_pm
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   - story: full screening — MLOps Engineer
+#     steps:
+#       - intent: start_screening
+#         entities:
+#          - entity: role           # Явно пишем ключ 'entity'
+#            value: "mlops engineer"
+#       - action: action_set_role
+#       - slot_was_set:
+#           - role: "mlops engineer"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_mlops
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   # 2. РОЛЬ НАЗЫВАЕТСЯ ОТДЕЛЬНО
+#   - story: greet → ask roles → inform role → screening
+#     steps:
+#       - intent: greet
+#       - action: utter_greet
+#       - intent: ask_available_roles
+#       - action: utter_available_roles
+#       - intent: inform_role
+#         entities:
+#          - entity: role
+#            value: "data scientist"
+#       - slot_was_set:
+#           - role: "data scientist"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_ds
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   # 3. БЫСТРЫЙ ТРЕК
+#   - story: fast track — full profile
+#     steps:
+#       - intent: provide_full_profile
+#       - action: action_set_role
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   - story: fast track after greet
+#     steps:
+#       - intent: greet
+#       - action: utter_greet
+#       - intent: provide_full_profile
+#       - action: action_set_role
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   # 4. ОТВЛЕЧЕНИЯ (INTERRUPTIONS)
+#   - story: user asks bot identity mid-screening
+#     steps:
+#       - intent: start_screening
+#         entities: 
+#          - entity: role
+#            value: "data scientist"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: bot_challenge
+#       - action: utter_iamabot
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_ds
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   - story: out of scope during screening
+#     steps:
+#       - intent: start_screening
+#         entities: 
+#          - entity: role
+#            value: "data engineer"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: out_of_scope
+#       - action: utter_default
+#       - action: utter_ask_experience
+#       - intent: inform_experience_years
+#       - action: utter_ask_skills_de
+#       - intent: inform_skills
+#       - action: utter_ask_salary
+#       - intent: inform_salary_expectation
+#       - action: utter_ask_format
+#       - intent: inform_work_format
+#       - action: utter_summary
+#       - action: action_evaluate_candidate
+
+#   # 5. ПРОЩАНИЕ ПОСРЕДИ
+#   - story: goodbye in the middle
+#     steps:
+#       - intent: start_screening
+#         entities: 
+#          - entity: role
+#            value: "data analyst"
+#       - action: action_set_role
+#       - action: utter_ask_experience
+#       - intent: goodbye
+#       - action: utter_goodbye
+
+
 version: "3.1"
 
 stories:
 
-- story: full screening
+- story: DS flow
   steps:
-  - intent: start_screening
-  - action: utter_ask_experience
-  - intent: inform_experience_years
-  - action: utter_ask_skills
-  - intent: inform_skills
-  - action: utter_ask_salary
-  - intent: inform_salary_expectation
-  - action: utter_ask_format
-  - intent: inform_work_format
-  - action: utter_summary
+    - intent: start_screening
+    - action: action_set_role
+    - action: utter_ask_experience
 
-- story: fast track
+    - intent: inform_experience_years
+    - action: utter_ask_skills_ds
+
+    - intent: inform_skills
+    - action: utter_ask_salary
+
+    - intent: inform_salary_expectation
+    - action: utter_ask_format
+
+    - intent: inform_work_format
+    - action: utter_summary
+    - action: action_evaluate_candidate
+
+
+- story: DE flow
   steps:
-  - intent: provide_full_profile
-  - action: utter_summary
+    - intent: start_screening
+    - action: action_set_role
+    - action: utter_ask_experience
+
+    - intent: inform_experience_years
+    - action: utter_ask_skills_de
+
+    - intent: inform_skills
+    - action: utter_ask_salary
+
+    - intent: inform_salary_expectation
+    - action: utter_ask_format
+
+    - intent: inform_work_format
+    - action: utter_summary
+    - action: action_evaluate_candidate

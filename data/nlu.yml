@@ -17,240 +17,242 @@ nlu:
     - \b\d{1,3}(?:\s?\d{1,3})?\s?(?:-|–|—)\s?\d{1,3}(?:\s?\d{1,3})?\s?(?:k|к|тыс|тысяч)\b
     - \b(?:от|до|около|более|менее)\s+\d{1,3}(?:\.\d{1,3})?\s*(?:тыс|к|руб)\b
 
+
 - lookup: role
   examples: |
-    project manager
-    product manager
-    product owner
-    data analyst
-    data engineer
-    data scientist
-    mlops engineer
-    devops engineer
-    site reliability engineer
-    sre
-    pm
-    prodact
-    product
-    da
-    de
-    ds
-    mlops
-    devops
-    девопс
-    девопс инженер
-    продакт
-    продакт менеджер
-    продукт менеджер
-    менеджер продукта
-    проджект менеджер
-    проджект
-    проджэкт
-    проджэкт менеджер
-    руководитель проекта
-    аналитик данных
-    дата аналитик
-    дата инженер
-    инженер данных
-    дата саентист
-    дата саенс
-    mlops инженер
-    sre инженер
-    po
-    scrum master
+    - project manager
+    - product manager
+    - product owner
+    - data analyst
+    - data engineer
+    - data scientist
+    - mlops engineer
+    - devops engineer
+    - site reliability engineer
+    - sre
+    - pm
+    - prodact
+    - product
+    - da
+    - de
+    - ds
+    - mlops
+    - devops
+    - девопс
+    - девопс инженер
+    - продакт
+    - продакт менеджер
+    - продукт менеджер
+    - менеджер продукта
+    - проджект менеджер
+    - проджект
+    - проджэкт
+    - проджэкт менеджер
+    - руководитель проекта
+    - аналитик данных
+    - дата аналитик
+    - дата инженер
+    - инженер данных
+    - дата саентист
+    - дата саенс
+    - mlops инженер
+    - sre инженер
+    - po
+    - scrum master
 
 - lookup: work_format
   examples: |
-    удаленка
-    удалёнка
-    удаленно
-    remote
-    full remote
-    полная удаленка
-    гибрид
-    hybrid
-    офис
-    office
-    гибкий
-    flexible
-    flex
-    фуллтайм
-    full-time
-    полный день
-    part-time
-    частичная занятость
-    неполный день
-    контракт
-    проектная работа
-    в офисе
-    из дома
+    - удаленка
+    - удалёнка
+    - удаленно
+    - remote
+    - full remote
+    - полная удаленка
+    - гибрид
+    - hybrid
+    - офис
+    - office
+    - гибкий
+    - flexible
+    - flex
+    - фуллтайм
+    - full-time
+    - полный день
+    - part-time
+    - частичная занятость
+    - неполный день
+    - контракт
+    - проектная работа
+    - в офисе
+    - из дома
 
 - lookup: skills
   examples: |
-    python
-    питон
-    sql
-    скл
-    скьюэль
-    postgresql
-    mysql
-    clickhouse
-    машинное обучение
-    ml
-    глубокое обучение
-    dl
-    нейросети
-    статистика
-    nlp
-    обработка текста
-    анализ данных
-    визуализация
-    etl
-    airflow
-    spark
-    kafka
-    docker
-    докер
-    kubernetes
-    кубер
-    mlflow
-    fastapi
-    django
-    flask
-    power bi
-    tableau
-    excel
-    jira
-    scrum
-    agile
-    linux
-    git
-    ci/cd
-    jenkins
-    gitlab ci
-    github actions
-    гитхаб экшнс
-    terraform
-    ansible
-    aws
-    gcp
-    azure
-    rest api
-    pandas
-    numpy
-    pytorch
-    tensorflow
-    keras
-    коммуникация
-    управление проектами
-    a/b тесты
-    ab тесты
-    product management
-    leadership
-    team lead
-    тимлид
+    - python
+    - питон
+    - sql
+    - скл
+    - скьюэль
+    - postgresql
+    - mysql
+    - clickhouse
+    - машинное обучение
+    - ml
+    - глубокое обучение
+    - dl
+    - нейросети
+    - статистика
+    - nlp
+    - обработка текста
+    - анализ данных
+    - визуализация
+    - etl
+    - airflow
+    - spark
+    - kafka
+    - docker
+    - докер
+    - kubernetes
+    - кубер
+    - mlflow
+    - fastapi
+    - django
+    - flask
+    - power bi
+    - tableau
+    - excel
+    - jira
+    - scrum
+    - agile
+    - linux
+    - git
+    - ci/cd
+    - jenkins
+    - gitlab ci
+    - github actions
+    - гитхаб экшнс
+    - terraform
+    - ansible
+    - aws
+    - gcp
+    - azure
+    - rest api
+    - pandas
+    - numpy
+    - pytorch
+    - tensorflow
+    - keras
+    - коммуникация
+    - управление проектами
+    - a/b тесты
+    - ab тесты
+    - product management
+    - leadership
+    - team lead
+    - тимлид
 
 - synonym: project manager
   examples: |
-    product manager
-    product owner
-    продукт менеджер
-    продакт
-    продакт менеджер
-    менеджер продукта
-    проджект менеджер
-    руководитель проекта
-    pm
-    проджэкт
-    po
+    - product manager
+    - product owner
+    - продукт менеджер
+    - продакт
+    - продакт менеджер
+    - менеджер продукта
+    - проджект менеджер
+    - руководитель проекта
+    - pm
+    - проджэкт
+    - po
 
 - synonym: data scientist
   examples: |
-    ds
-    data science
-    дата саентист
-    дата саенс
-    дс
+    - ds
+    - data science
+    - дата саентист
+    - дата саенс
+    - дс
 
 - synonym: data engineer
   examples: |
-    de
-    дата инженер
-    инженер данных
-    де
+    - de
+    - дата инженер
+    - инженер данных
+    - де
 
 - synonym: data analyst
   examples: |
-    da
-    аналитик данных
-    дата аналитик
-    да
+    - da
+    - аналитик данных
+    - дата аналитик
+    - да
 
 - synonym: mlops engineer
   examples: |
-    devops
-    devops engineer
-    девопс
-    девопс инженер
-    site reliability engineer
-    sre
-    sre инженер
-    mlops
-    mlops инженер
+    - devops
+    - devops engineer
+    - девопс
+    - девопс инженер
+    - site reliability engineer
+    - sre
+    - sre инженер
+    - mlops
+    - mlops инженер
 
 - synonym: удаленка
   examples: |
-    удаленно
-    remote
-    full remote
-    удалёнка
+    - удаленно
+    - remote
+    - full remote
+    - удалёнка
 
 - synonym: гибрид
   examples: |
-    hybrid
+    - hybrid
 
 - synonym: офис
   examples: |
-    office
+    - office
 
 - synonym: гибкий
   examples: |
-    flexible
-    flex
-    part-time
-    частичная занятость
-    контракт
-    проектная работа
-    неполный день
+    - flexible
+    - flex
+    - part-time
+    - частичная занятость
+    - контракт
+    - проектная работа
+    - неполный день
 
 - synonym: python
   examples: |
-    питон
-    пайтон
-    py
+    - питон
+    - пайтон
+    - py
 
 - synonym: sql
   examples: |
-    скьюэль
-    эскуэль
-    скл
+    - скьюэль
+    - эскуэль
+    - скл
 
 - synonym: docker
   examples: |
-    докер
-    док
+    - докер
+    - док
 
 - synonym: kubernetes
   examples: |
-    кубер
-    k8s
-    кубернетес
+    - кубер
+    - k8s
+    - кубернетес
 
 - synonym: github actions
   examples: |
-    github actions
-    гитхаб экшнс
-    gitlab ci
+    - github actions
+    - гитхаб экшнс
+    - gitlab ci
+
 
 
 - intent: start_screening
