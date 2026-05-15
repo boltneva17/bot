@@ -876,13 +876,13 @@ class ActionSummary(Action):
                 explanation = verdict_message.strip()
 
         summary = (
-            f"📄 Резюме вашей анкеты:\n"
+            f"--> Резюме вашей анкеты:\n"
             f"---------------------\n"
-            f"👤 Роль: {role.title()}\n" # role.title() для красивого вывода
-            f"⏱️ Опыт: {experience}\n"
-            f"🛠️ Навыки: {skills_str}\n"
-            f"💰 ЗП: {salary}\n"
-            f"🏢 Формат: {work_format.title()}\n" # work_format.title() для красивого вывода
+            f"Роль: {role.title()}\n" # role.title() для красивого вывода
+            f"Опыт: {experience}\n"
+            f"Навыки: {skills_str}\n"
+            f"ЗП: {salary}\n"
+            f"Формат: {work_format.title()}\n" # work_format.title() для красивого вывода
             f"---------------------\n"
             f"{verdict_emoji} {explanation}"
         )

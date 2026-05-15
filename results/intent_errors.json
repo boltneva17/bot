@@ -1,0 +1,10 @@
+[
+  {
+    "text": "10",
+    "intent": "inform_experience_years",
+    "intent_prediction": {
+      "name": "inform_salary_expectation",
+      "confidence": 0.8114938139915466
+    }
+  }
+]

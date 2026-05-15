@@ -1,0 +1,98 @@
+[
+  {
+    "text": "350000",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "350000",
+        "entity": "salary_expectation"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "experience_years",
+        "start": 0,
+        "end": 6,
+        "confidence_entity": 0.5667190551757812,
+        "value": "350000",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "500000",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "500000",
+        "entity": "salary_expectation"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "experience_years",
+        "start": 0,
+        "end": 6,
+        "confidence_entity": 0.5667190551757812,
+        "value": "500000",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "150000",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "150000",
+        "entity": "salary_expectation"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "experience_years",
+        "start": 0,
+        "end": 6,
+        "confidence_entity": 0.5667190551757812,
+        "value": "150000",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "300000",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "300000",
+        "entity": "salary_expectation"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "experience_years",
+        "start": 0,
+        "end": 6,
+        "confidence_entity": 0.5667190551757812,
+        "value": "300000",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]
