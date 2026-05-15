@@ -1,0 +1,70 @@
+[
+  {
+    "name": "experience_years",
+    "pattern": "\\b\\d{1,2}(?:[\\.,]\\d)?\\s*(?:\\+)?\\s*(?:год|года|лет|г\\.)\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\b\\d{1,2}\\s*(?:мес|месяц|месяца|месяцев|мес\\.)\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bболее\\s+\\d{1,2}\\s+лет\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bоколо\\s+\\d{1,2}\\s+лет\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bпол\\s?года\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b(?:от|до|около|более|менее)\\s+\\d{1,3}(?:\\.\\d{1,3})?\\s*(?:тыс|к|руб)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d(?:[\\.,]\\d)?\\s?(?:млн|million)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d+(?:[\\.,]\\d+)?\\s*(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d+(?:[\\.,]\\d+)?\\s*млн\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d+\\s*-\\s*\\d+\\s*(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:-|–|—)\\s?\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:₽|руб|рублей|р\\.)?\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{2,7}\\s*(?:₽|руб|рублей|k|к|тыс|тысяч|млн|million)?\\b"
+  },
+  {
+    "name": "role",
+    "pattern": "(\\bproject\\ manager\\b|\\bproduct\\ manager\\b|\\bproduct\\ owner\\b|\\bdata\\ analyst\\b|\\bdata\\ engineer\\b|\\bdata\\ scientist\\b|\\bmlops\\ engineer\\b|\\bdevops\\ engineer\\b|\\bsite\\ reliability\\ engineer\\b|\\bsre\\b|\\bpm\\b|\\bprodact\\b|\\bproduct\\b|\\bda\\b|\\bde\\b|\\bds\\b|\\bmlops\\b|\\bdevops\\b|\\bдевопс\\b|\\bдевопс\\ инженер\\b|\\bпродакт\\b|\\bпродакт\\ менеджер\\b|\\bпродукт\\ менеджер\\b|\\bменеджер\\ продукта\\b|\\bпроджект\\ менеджер\\b|\\bпроджект\\b|\\bпроджэкт\\b|\\bпроджэкт\\ менеджер\\b|\\bруководитель\\ проекта\\b|\\bаналитик\\ данных\\b|\\bдата\\ аналитик\\b|\\bдата\\ инженер\\b|\\bинженер\\ данных\\b|\\bдата\\ саентист\\b|\\bдата\\ саенс\\b|\\bmlops\\ инженер\\b|\\bsre\\ инженер\\b|\\bpo\\b|\\bscrum\\ master\\b)"
+  },
+  {
+    "name": "work_format",
+    "pattern": "(\\bудаленка\\b|\\bудалёнка\\b|\\bудаленно\\b|\\bremote\\b|\\bfull\\ remote\\b|\\bполная\\ удаленка\\b|\\bгибрид\\b|\\bhybrid\\b|\\bофис\\b|\\boffice\\b|\\bгибкий\\b|\\bflexible\\b|\\bflex\\b|\\bфуллтайм\\b|\\bfull\\-time\\b|\\bполный\\ день\\b|\\bpart\\-time\\b|\\bчастичная\\ занятость\\b|\\bнеполный\\ день\\b|\\bконтракт\\b|\\bпроектная\\ работа\\b|\\bв\\ офисе\\b|\\bиз\\ дома\\b)"
+  },
+  {
+    "name": "skills",
+    "pattern": "(\\bpython\\b|\\bpy\\b|\\bпитон\\b|\\bпайтон\\b|\\bпитн\\b|\\bпайтн\\b|\\bphyton\\b|\\bpython3\\b|\\bpython\\ 3\\b|\\bпитон3\\b|\\bsql\\b|\\bскл\\b|\\bскьюэль\\b|\\bэскуэль\\b|\\bэс\\ кью\\ эль\\b|\\bсиквел\\b|\\bpostgresql\\b|\\bpostgres\\b|\\bpostgre\\b|\\bmysql\\b|\\bmssql\\b|\\bms\\ sql\\b|\\boracle\\ sql\\b|\\bsqlite\\b|\\bsql\\ server\\b|\\bstructured\\ query\\ language\\b|\\bclickhouse\\b|\\bмашинное\\ обучение\\b|\\bml\\b|\\bmachine\\ learning\\b|\\bмаш\\ обучение\\b|\\bмашин\\ лернинг\\b|\\bмашин\\ ленинг\\b|\\bмашленинг\\b|\\bмл\\b|\\bai/ml\\b|\\bpredictive\\ modeling\\b|\\bглубокое\\ обучение\\b|\\bdeep\\ learning\\b|\\bdl\\b|\\bнейросети\\b|\\bнейронки\\b|\\bнейронные\\ сети\\b|\\bстатистика\\b|\\bnlp\\b|\\bnatural\\ language\\ processing\\b|\\bобработка\\ естественного\\ языка\\b|\\bобработка\\ текста\\b|\\btext\\ mining\\b|\\bcv\\b|\\bcomputer\\ vision\\b|\\bкомпьютерное\\ зрение\\b|\\bкомп\\ зрение\\b|\\bvision\\b|\\bанализ\\ данных\\b|\\bdata\\ analysis\\b|\\bdata\\ analytics\\b|\\bпродуктовая\\ аналитика\\b|\\bвизуализация\\b|\\ba/b\\ тесты\\b|\\bab\\ тесты\\b|\\betl\\b|\\belt\\b|\\bпайплайны\\ данных\\b|\\bdata\\ pipelines\\b|\\bинтеграция\\ данных\\b|\\bairflow\\b|\\bapache\\ airflow\\b|\\bэйрфлоу\\b|\\bаирфлоу\\b|\\bspark\\b|\\bapache\\ spark\\b|\\bpyspark\\b|\\bспарк\\b|\\bkafka\\b|\\bapache\\ kafka\\b|\\bкафка\\b|\\bkafkа\\b|\\bdocker\\b|\\bдокер\\b|\\bдоккер\\b|\\bdocker\\-compose\\b|\\bdocker\\ compose\\b|\\bkubernetes\\b|\\bk8s\\b|\\bkubectl\\b|\\bкубер\\b|\\bкуб\\b|\\bкубернетес\\b|\\bкубернетс\\b|\\bkubernets\\b|\\bmlflow\\b|\\bml\\ flow\\b|\\bэмэльфлоу\\b|\\bfastapi\\b|\\bdjango\\b|\\bflask\\b|\\bpower\\ bi\\b|\\bpowerbi\\b|\\bpower\\-bi\\b|\\bпауэр\\ би\\b|\\bпавер\\ би\\b|\\btableau\\b|\\bтабло\\b|\\bтаблеу\\b|\\bexcel\\b|\\bms\\ excel\\b|\\bmicrosoft\\ excel\\b|\\bэксель\\b|\\bексель\\b|\\bjira\\b|\\bджира\\b|\\bjira\\ software\\b|\\bscrum\\b|\\bскрам\\b|\\bscram\\b|\\bagile\\b|\\bаджайл\\b|\\bagille\\b|\\bkanban\\b|\\bканбан\\b|\\bkanban\\ board\\b|\\blinux\\b|\\bgnu/linux\\b|\\blinuks\\b|\\bлинукс\\b|\\bubuntu\\b|\\bgit\\b|\\bci/cd\\b|\\bci\\ cd\\b|\\bcicd\\b|\\bjenkins\\b|\\bgitlab\\ ci\\b|\\bgithub\\ actions\\b|\\bгитхаб\\ экшнс\\b|\\bterraform\\b|\\bansible\\b|\\baws\\b|\\bgcp\\b|\\bazure\\b|\\brest\\ api\\b|\\bpandas\\b|\\bnumpy\\b|\\bpytorch\\b|\\btensorflow\\b|\\bkeras\\b|\\bкоммуникация\\b|\\bуправление\\ проектами\\b|\\bproject\\ management\\b|\\bpm\\ practices\\b|\\bproduct\\ management\\b|\\bleadership\\b|\\bteam\\ lead\\b|\\bтимлид\\b)"
+  }
+]

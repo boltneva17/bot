@@ -1,62 +1,96 @@
-
-# version: "3.1"
-# rules:
-#   - rule: Приветствие
-#     steps:
-#       - intent: greet
-#       - action: utter_greet
-
-#   - rule: Прощание
-#     steps:
-#       - intent: goodbye
-#       - action: utter_goodbye
-
-#   - rule: Что ты умеешь
-#     steps:
-#       - intent: ask_capabilities
-#       - action: utter_capabilities
-
-#   - rule: Меню навыков
-#     steps:
-#       - intent: request_skills_menu
-#       - action: utter_skills_menu
-
-#   - rule: Подтверждение
-#     steps:
-#       - intent: affirm
-#       - action: utter_greet # Или любое другое действие
-
-#   - rule: Отказ
-#     steps:
-#       - intent: deny
-#       - action: utter_goodbye
-
 version: "3.1"
-
-
 rules:
 
-- rule: greet
+- rule: Приветствие
   steps:
     - intent: greet
     - action: utter_greet
 
-- rule: goodbye
+- rule: Прощание
   steps:
     - intent: goodbye
     - action: utter_goodbye
 
-- rule: bot
+- rule: Бот или человек
   steps:
     - intent: bot_challenge
     - action: utter_iamabot
 
-- rule: fallback
+- rule: Какие роли
   steps:
-    - intent: nlu_fallback
+    - intent: ask_available_roles
+    - action: utter_available_roles
+
+- rule: Меню навыков
+  steps:
+    - intent: request_skills_menu
+    - action: utter_skills_menu
+
+- rule: Вне области
+  steps:
+    - intent: out_of_scope
     - action: utter_default
 
-- rule: restart
+- rule: Рестарт
   steps:
     - intent: restart
     - action: action_restart
+
+# === НОВЫЕ ПРАВИЛА ДЛЯ СКРИНИНГА ===
+
+- rule: Start screening after role is set
+  steps:
+    - intent: start_screening
+    - action: action_set_role
+    - slot_was_set:
+        - role: {"not_null": true}
+    - action: utter_ask_experience
+
+- rule: Process experience after expected intent
+  steps:
+    - action: utter_ask_experience
+    - intent: inform_experience_years
+    - action: action_process_experience
+    - slot_was_set:
+        - experience_years: {"not_null": true}
+    - action: action_ask_skills
+
+- rule: Process experience when intent was mistaken as salary
+  steps:
+    - action: utter_ask_experience
+    - intent: inform_salary_expectation
+    - action: action_process_experience
+    - slot_was_set:
+        - experience_years: {"not_null": true}
+    - action: action_ask_skills
+
+- rule: Ask salary after skills
+  steps:
+    - action: action_ask_skills
+    - intent: inform_skills
+    - action: utter_ask_salary
+
+- rule: Process salary after expected intent
+  steps:
+    - action: utter_ask_salary
+    - intent: inform_salary_expectation
+    - action: action_process_salary
+    - slot_was_set:
+        - salary_expectation: {"not_null": true}
+    - action: utter_ask_format
+
+- rule: Process salary when intent was mistaken as experience
+  steps:
+    - action: utter_ask_salary
+    - intent: inform_experience_years
+    - action: action_process_salary
+    - slot_was_set:
+        - salary_expectation: {"not_null": true}
+    - action: utter_ask_format
+
+- rule: Evaluate and summarize after format
+  steps:
+    - action: utter_ask_format
+    - intent: inform_work_format
+    - action: action_evaluate_candidate
+    - action: action_summary

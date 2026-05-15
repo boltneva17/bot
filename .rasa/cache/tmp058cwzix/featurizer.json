@@ -1,0 +1,72 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "affirm": 0,
+        "ask_available_roles": 1,
+        "ask_capabilities": 2,
+        "back": 3,
+        "bot_challenge": 4,
+        "deny": 5,
+        "goodbye": 6,
+        "greet": 7,
+        "inform_experience_years": 8,
+        "inform_salary_expectation": 9,
+        "inform_skills": 10,
+        "inform_work_format": 11,
+        "nlu_fallback": 12,
+        "out_of_scope": 13,
+        "request_skills_menu": 14,
+        "restart": 15,
+        "session_start": 16,
+        "start_screening": 17
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_set_role": 13,
+        "action_evaluate_candidate": 14,
+        "action_summary": 15,
+        "action_ask_skills": 16,
+        "utter_affirm": 17,
+        "utter_ask_experience": 18,
+        "utter_ask_format": 19,
+        "utter_ask_salary": 20,
+        "utter_available_roles": 21,
+        "utter_capabilities": 22,
+        "utter_default": 23,
+        "utter_goodbye": 24,
+        "utter_greet": 25,
+        "utter_iamabot": 26,
+        "utter_skills_menu": 27
+      },
+      "entities": {
+        "experience_years": 0,
+        "role": 1,
+        "salary_expectation": 2,
+        "skills": 3,
+        "work_format": 4
+      },
+      "slots": {
+        "role_0": 0
+      },
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 10
+}

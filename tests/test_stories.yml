@@ -1,239 +1,82 @@
 version: "3.1"
 
 stories:
-
-# =========================
-# 1. DATA SCIENTIST — GOOD
-# =========================
-- story: good data scientist
+- story: happy path with expected intents
   steps:
   - intent: start_screening
-    entities:
-      - entity: role
-        value: "data scientist"
-
   - action: action_set_role
   - slot_was_set:
-      - role: "data scientist"
-
+      - role: {"not_null": true}
   - action: utter_ask_experience
-
   - intent: inform_experience_years
-  - action: utter_ask_skills_ds
-
+  - action: action_process_experience
+  - slot_was_set:
+      - experience_years: {"not_null": true}
+  - action: action_ask_skills
   - intent: inform_skills
   - action: utter_ask_salary
-
   - intent: inform_salary_expectation
+  - action: action_process_salary
+  - slot_was_set:
+      - salary_expectation: {"not_null": true}
   - action: utter_ask_format
-
   - intent: inform_work_format
-  - action: utter_summary
-
   - action: action_evaluate_candidate
+  - action: action_summary
 
-
-# =========================
-# 2. DATA SCIENTIST — BAD
-# =========================
-- story: bad data scientist (no experience)
+- story: experience step survives wrong salary intent
   steps:
   - intent: start_screening
-    entities:
-      - entity: role
-        value: "data scientist"
-
   - action: action_set_role
   - slot_was_set:
-      - role: "data scientist"
-
+      - role: {"not_null": true}
   - action: utter_ask_experience
+  - intent: inform_salary_expectation
+  - action: action_process_experience
+  - slot_was_set:
+      - experience_years: {"not_null": true}
+  - action: action_ask_skills
 
+- story: salary step survives wrong experience intent
+  steps:
+  - intent: start_screening
+  - action: action_set_role
+  - slot_was_set:
+      - role: {"not_null": true}
+  - action: utter_ask_experience
   - intent: inform_experience_years
-  - action: utter_ask_skills_ds
-
+  - action: action_process_experience
+  - slot_was_set:
+      - experience_years: {"not_null": true}
+  - action: action_ask_skills
   - intent: inform_skills
   - action: utter_ask_salary
-
-  - intent: inform_salary_expectation
+  - intent: inform_experience_years
+  - action: action_process_salary
+  - slot_was_set:
+      - salary_expectation: {"not_null": true}
   - action: utter_ask_format
 
-  - intent: inform_work_format
-  - action: utter_summary
-
-  - action: action_evaluate_candidate
-
-
-# =========================
-# 3. DATA ENGINEER
-# =========================
-- story: data engineer flow
+- story: salary clarification then continue
   steps:
   - intent: start_screening
-    entities:
-      - entity: role
-        value: "data engineer"
-
   - action: action_set_role
   - slot_was_set:
-      - role: "data engineer"
-
+      - role: {"not_null": true}
   - action: utter_ask_experience
-
   - intent: inform_experience_years
-  - action: utter_ask_skills_de
-
+  - action: action_process_experience
+  - slot_was_set:
+      - experience_years: {"not_null": true}
+  - action: action_ask_skills
   - intent: inform_skills
   - action: utter_ask_salary
-
-  - intent: inform_salary_expectation
-  - action: utter_ask_format
-
-  - intent: inform_work_format
-  - action: utter_summary
-
-  - action: action_evaluate_candidate
-
-
-# =========================
-# 4. DATA ANALYST
-# =========================
-- story: data analyst flow
-  steps:
-  - intent: start_screening
-    entities:
-      - entity: role
-        value: "data analyst"
-
-  - action: action_set_role
-  - slot_was_set:
-      - role: "data analyst"
-
-  - action: utter_ask_experience
-
   - intent: inform_experience_years
-  - action: utter_ask_skills_da
-
-  - intent: inform_skills
-  - action: utter_ask_salary
-
+  - action: action_process_salary
+  - slot_was_set:
+      - salary_expectation: null
   - intent: inform_salary_expectation
+  - action: action_process_salary
+  - slot_was_set:
+      - salary_expectation: {"not_null": true}
   - action: utter_ask_format
-
-  - intent: inform_work_format
-  - action: utter_summary
-
-  - action: action_evaluate_candidate
-
-
-# =========================
-# 5. PROJECT MANAGER
-# =========================
-- story: pm flow
-  steps:
-  - intent: start_screening
-    entities:
-      - entity: role
-        value: "project manager"
-
-  - action: action_set_role
-  - slot_was_set:
-      - role: "project manager"
-
-  - action: utter_ask_experience
-
-  - intent: inform_experience_years
-  - action: utter_ask_skills_pm
-
-  - intent: inform_skills
-  - action: utter_ask_salary
-
-  - intent: inform_salary_expectation
-  - action: utter_ask_format
-
-  - intent: inform_work_format
-  - action: utter_summary
-
-  - action: action_evaluate_candidate
-
-
-# =========================
-# 6. MLOPS ENGINEER
-# =========================
-- story: mlops flow
-  steps:
-  - intent: start_screening
-    entities:
-      - entity: role
-        value: "mlops engineer"
-
-  - action: action_set_role
-  - slot_was_set:
-      - role: "mlops engineer"
-
-  - action: utter_ask_experience
-
-  - intent: inform_experience_years
-  - action: utter_ask_skills_mlops
-
-  - intent: inform_skills
-  - action: utter_ask_salary
-
-  - intent: inform_salary_expectation
-  - action: utter_ask_format
-
-  - intent: inform_work_format
-  - action: utter_summary
-
-  - action: action_evaluate_candidate
-
-
-# =========================
-# 7. ROLE CHANGE MID FLOW
-# =========================
-- story: role switch during screening
-  steps:
-  - intent: start_screening
-    entities:
-      - entity: role
-        value: "data scientist"
-
-  - action: action_set_role
-  - slot_was_set:
-      - role: "data scientist"
-
-  - action: utter_ask_experience
-
-  - intent: inform_experience_years
-
-  # пользователь меняет роль
-  - intent: inform_role
-    entities:
-      - entity: role
-        value: "mlops engineer"
-
-  - action: action_set_role
-  - slot_was_set:
-      - role: "mlops engineer"
-
-  - action: utter_ask_skills_mlops
-
-
-# =========================
-# 8. GOODBYE MIDDLE FLOW
-# =========================
-- story: user leaves during screening
-  steps:
-  - intent: start_screening
-    entities:
-      - entity: role
-        value: "data analyst"
-
-  - action: action_set_role
-  - slot_was_set:
-      - role: "data analyst"
-
-  - action: utter_ask_experience
-
-  - intent: goodbye
-  - action: utter_goodbye

@@ -1,96 +1,94 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - start_screening
-  - inform_role
-  - inform_experience_years
-  - inform_skills
-  - inform_salary_expectation
-  - inform_work_format
-  - provide_full_profile
-  - greet
-  - goodbye
-  - bot_challenge
-  - ask_capabilities
-  - ask_available_roles
-  - affirm 
-  - deny     
-  - restart
-  - request_skills_menu
-
+- ask_available_roles
+- ask_capabilities
+- bot_challenge
+- goodbye
+- greet
+- inform_experience_years
+- inform_salary_expectation
+- inform_skills
+- inform_work_format
+- out_of_scope
+- request_skills_menu
+- restart
+- start_screening
 entities:
-  - role
-  - experience_years
-  - skills
-  - salary_expectation
-  - work_format
-
+- work_format
+- experience_years
+- role
+- salary_expectation
+- skills
 slots:
   role:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: role
+    - type: from_entity
+      entity: role
+  evaluation_result:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
   experience_years:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: experience_years
+    - type: from_text
+      intent: inform_experience_years
   skills:
     type: list
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: skills
+    - type: from_text
+      intent: inform_skills
   salary_expectation:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: salary_expectation
+    - type: from_text
+      intent: inform_salary_expectation
   work_format:
     type: text
     influence_conversation: false
     mappings:
-      - type: from_entity
-        entity: work_format
-
+    - type: from_text
+      intent: inform_work_format
 responses:
   utter_greet:
-    - text: "Привет! 👋 Я HR-бот. Провожу отбор на IT-позиции. На какую роль претендуете?"
+  - text: Привет! 👋 Я HR-бот. Провожу отбор на IT-позиции. На какую роль претендуете?
   utter_ask_experience:
-    - text: "Какой у вас опыт работы в годах?"
-  utter_ask_skills_pm:
-    - text: "Какие методологии управления вы знаете? (Scrum, Kanban, Jira)"
-  utter_ask_skills_da:
-    - text: "Ваш стек в аналитике? (SQL, Tableau, Python)"
-  utter_ask_skills_de:
-    - text: "Какие инструменты данных используете? (Airflow, Spark, Kafka)"
-  utter_ask_skills_ds:
-    - text: "Ваш ML-стек? (PyTorch, Sklearn, NLP/CV)"
-  utter_ask_skills_mlops:
-    - text: "Инструменты MLOps? (Docker, K8s, MLflow)"
+  - text: Какой у вас опыт работы в годах?
   utter_ask_salary:
-    - text: "Какие у вас зарплатные ожидания?"
+  - text: Какие у вас зарплатные ожидания?
   utter_ask_format:
-    - text: "Какой формат работы удобен (удаленка, офис, гибрид)?"
-  utter_summary:
-    - text: "Спасибо! Итого: Роль: {role}, Опыт: {experience_years}, Навыки: {skills}, ЗП: {salary_expectation}, Формат: {work_format}. Проверяю данные..."
+  - text: Какой формат работы удобен (удаленка, офис, гибрид)?
   utter_goodbye:
-    - text: "До свидания! Мы свяжемся с вами."
+  - text: До свидания! Мы свяжемся с вами.
   utter_iamabot:
-    - text: "Я — искусственный интеллект, помогающий HR-команде."
+  - text: Я — искусственный интеллект, помогающий HR-команде.
   utter_available_roles:
-    - text: "У нас открыты: Data Scientist, Data Engineer, Data Analyst, Project Manager, MLOps."
+  - text: 'У нас открыты: Data Scientist, Data Engineer, Data Analyst, Project Manager, MLOps.'
   utter_capabilities:
-    - text: "Я могу провести первичное интервью и оценить твой профиль."
+  - text: Я могу провести первичное интервью и оценить твой профиль.
   utter_skills_menu:
-    - text: "Вот популярные навыки: Python, SQL, Docker, Spark. Что из этого умеете?"
-  utter_default: # Добавлено, так как используется в сторисах
-    - text: "Извините, я не совсем понял. Давайте вернемся к интервью?"
-
+  - text: 'Вот популярные навыки: Python, SQL, Docker, Spark. Что из этого умеете?'
+  utter_default:
+  - text: Извините, я не совсем понял. Давайте вернемся к интервью?
 actions:
-  - action_set_role
-  - action_evaluate_candidate
+- action_set_role
+- action_process_experience
+- action_process_salary
+- utter_greet
+- action_evaluate_candidate
+- utter_ask_salary
+- utter_ask_experience
+- utter_ask_format
+- action_ask_skills
+- action_summary
+- utter_goodbye
+- action_restart
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

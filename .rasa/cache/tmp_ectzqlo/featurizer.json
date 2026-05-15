@@ -1,0 +1,77 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "affirm": 0,
+        "ask_available_roles": 1,
+        "ask_capabilities": 2,
+        "back": 3,
+        "bot_challenge": 4,
+        "deny": 5,
+        "goodbye": 6,
+        "greet": 7,
+        "inform_experience_years": 8,
+        "inform_role": 9,
+        "inform_salary_expectation": 10,
+        "inform_skills": 11,
+        "inform_work_format": 12,
+        "nlu_fallback": 13,
+        "out_of_scope": 14,
+        "provide_full_profile": 15,
+        "request_skills_menu": 16,
+        "restart": 17,
+        "session_start": 18,
+        "start_screening": 19
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_set_role": 13,
+        "action_evaluate_candidate": 14,
+        "utter_ask_experience": 15,
+        "utter_ask_format": 16,
+        "utter_ask_salary": 17,
+        "utter_ask_skills_da": 18,
+        "utter_ask_skills_de": 19,
+        "utter_ask_skills_ds": 20,
+        "utter_ask_skills_mlops": 21,
+        "utter_ask_skills_pm": 22,
+        "utter_available_roles": 23,
+        "utter_capabilities": 24,
+        "utter_default": 25,
+        "utter_goodbye": 26,
+        "utter_greet": 27,
+        "utter_iamabot": 28,
+        "utter_skills_menu": 29,
+        "utter_summary": 30
+      },
+      "entities": {
+        "experience_years": 0,
+        "role": 1,
+        "salary_expectation": 2,
+        "skills": 3,
+        "work_format": 4
+      },
+      "slots": {
+        "role_0": 0
+      },
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 10
+}

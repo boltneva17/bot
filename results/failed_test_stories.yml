@@ -1,0 +1,111 @@
+version: "3.1"
+stories:
+- story: good data scientist (tests/test_stories.yml)
+  steps:
+  - intent: start_screening
+    entities:
+    - value: data scientist
+  - action: action_set_role
+  - slot_was_set:
+    - role: data scientist
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: utter_ask_skills_ds  # predicted: action_default_fallback
+  - intent: inform_skills
+  - action: utter_ask_salary
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+  - intent: inform_work_format
+  - action: utter_summary
+  - action: action_evaluate_candidate  # predicted: action_default_fallback
+- story: data engineer flow (tests/test_stories.yml)
+  steps:
+  - intent: start_screening
+    entities:
+    - value: data engineer
+  - action: action_set_role
+  - slot_was_set:
+    - role: data engineer
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: utter_ask_skills_de  # predicted: action_default_fallback
+  - intent: inform_skills
+  - action: utter_ask_salary
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+  - intent: inform_work_format
+  - action: utter_summary
+  - action: action_evaluate_candidate  # predicted: action_default_fallback
+- story: data analyst flow (tests/test_stories.yml)
+  steps:
+  - intent: start_screening
+    entities:
+    - value: data analyst
+  - action: action_set_role
+  - slot_was_set:
+    - role: data analyst
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: utter_ask_skills_da  # predicted: action_default_fallback
+  - intent: inform_skills
+  - action: utter_ask_salary
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+  - intent: inform_work_format
+  - action: utter_summary
+  - action: action_evaluate_candidate  # predicted: action_default_fallback
+- story: pm flow (tests/test_stories.yml)
+  steps:
+  - intent: start_screening
+    entities:
+    - value: project manager
+  - action: action_set_role
+  - slot_was_set:
+    - role: project manager
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: utter_ask_skills_pm  # predicted: action_default_fallback
+  - intent: inform_skills
+  - action: utter_ask_salary
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+  - intent: inform_work_format
+  - action: utter_summary
+  - action: action_evaluate_candidate  # predicted: action_default_fallback
+- story: mlops flow (tests/test_stories.yml)
+  steps:
+  - intent: start_screening
+    entities:
+    - value: mlops engineer
+  - action: action_set_role
+  - slot_was_set:
+    - role: mlops engineer
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: utter_ask_skills_mlops  # predicted: action_default_fallback
+  - intent: inform_skills
+  - action: utter_ask_salary
+  - intent: inform_salary_expectation
+  - action: utter_ask_format
+  - intent: inform_work_format
+  - action: utter_summary
+  - action: action_evaluate_candidate  # predicted: action_default_fallback
+- story: role switch during screening (tests/test_stories.yml)
+  steps:
+  - intent: start_screening
+    entities:
+    - value: data scientist
+  - action: action_set_role
+  - slot_was_set:
+    - role: data scientist
+  - action: utter_ask_experience
+  - intent: inform_experience_years
+  - action: action_listen  # predicted: action_default_fallback
+  - intent: inform_role
+    entities:
+    - value: mlops engineer
+  - action: action_set_role  # predicted: action_default_fallback
+  - slot_was_set:
+    - role: mlops engineer
+  - action: utter_ask_skills_mlops  # predicted: utter_ask_experience
+  - action: action_listen  # predicted: action_default_fallback

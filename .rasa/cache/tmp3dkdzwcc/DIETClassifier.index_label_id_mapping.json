@@ -1,0 +1,15 @@
+{
+  "0": "ask_available_roles",
+  "1": "ask_capabilities",
+  "2": "bot_challenge",
+  "3": "goodbye",
+  "4": "greet",
+  "5": "inform_experience_years",
+  "6": "inform_salary_expectation",
+  "7": "inform_skills",
+  "8": "inform_work_format",
+  "9": "out_of_scope",
+  "10": "request_skills_menu",
+  "11": "restart",
+  "12": "start_screening"
+}

@@ -1,6 +1,6 @@
 recipe: default.v1
 assistant_id: hr_bot_screening
-language: ru  # Исправлено на ru
+language: ru  
 
 pipeline:
   - name: WhitespaceTokenizer

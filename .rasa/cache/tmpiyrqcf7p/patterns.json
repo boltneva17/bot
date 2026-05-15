@@ -1,0 +1,54 @@
+[
+  {
+    "name": "experience_years",
+    "pattern": "\\b\\d{1,2}(?:[\\.,]\\d)?\\s*(?:\\+)?\\s*(?:год|года|лет|г\\.)\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\b\\d{1,2}\\s*(?:мес|месяц|месяца|месяцев|мес\\.)\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bболее\\s+\\d{1,2}\\s+лет\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bоколо\\s+\\d{1,2}\\s+лет\\b"
+  },
+  {
+    "name": "experience_years",
+    "pattern": "\\bпол\\s?года\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b(?:от|до|около|более|менее)\\s+\\d{1,3}(?:\\.\\d{1,3})?\\s*(?:тыс|к|руб)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d(?:[\\.,]\\d)?\\s?(?:млн|million)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:-|–|—)\\s?\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:k|к|тыс|тысяч)\\b"
+  },
+  {
+    "name": "salary_expectation",
+    "pattern": "\\b\\d{1,3}(?:\\s?\\d{1,3})?\\s?(?:₽|руб|рублей|р\\.)?\\b"
+  },
+  {
+    "name": "role",
+    "pattern": "(\\bproject\\ manager\\b|\\bproduct\\ manager\\b|\\bproduct\\ owner\\b|\\bdata\\ analyst\\b|\\bdata\\ engineer\\b|\\bdata\\ scientist\\b|\\bmlops\\ engineer\\b|\\bdevops\\ engineer\\b|\\bsite\\ reliability\\ engineer\\b|\\bsre\\b|\\bpm\\b|\\bprodact\\b|\\bproduct\\b|\\bda\\b|\\bde\\b|\\bds\\b|\\bmlops\\b|\\bdevops\\b|\\bдевопс\\b|\\bдевопс\\ инженер\\b|\\bпродакт\\b|\\bпродакт\\ менеджер\\b|\\bпродукт\\ менеджер\\b|\\bменеджер\\ продукта\\b|\\bпроджект\\ менеджер\\b|\\bпроджект\\b|\\bпроджэкт\\b|\\bпроджэкт\\ менеджер\\b|\\bруководитель\\ проекта\\b|\\bаналитик\\ данных\\b|\\bдата\\ аналитик\\b|\\bдата\\ инженер\\b|\\bинженер\\ данных\\b|\\bдата\\ саентист\\b|\\bдата\\ саенс\\b|\\bmlops\\ инженер\\b|\\bsre\\ инженер\\b|\\bpo\\b|\\bscrum\\ master\\b)"
+  },
+  {
+    "name": "work_format",
+    "pattern": "(\\bудаленка\\b|\\bудалёнка\\b|\\bудаленно\\b|\\bremote\\b|\\bfull\\ remote\\b|\\bполная\\ удаленка\\b|\\bгибрид\\b|\\bhybrid\\b|\\bофис\\b|\\boffice\\b|\\bгибкий\\b|\\bflexible\\b|\\bflex\\b|\\bфуллтайм\\b|\\bfull\\-time\\b|\\bполный\\ день\\b|\\bpart\\-time\\b|\\bчастичная\\ занятость\\b|\\bнеполный\\ день\\b|\\bконтракт\\b|\\bпроектная\\ работа\\b|\\bв\\ офисе\\b|\\bиз\\ дома\\b)"
+  },
+  {
+    "name": "skills",
+    "pattern": "(\\bpython\\b|\\bпитон\\b|\\bsql\\b|\\bскл\\b|\\bскьюэль\\b|\\bpostgresql\\b|\\bmysql\\b|\\bclickhouse\\b|\\bмашинное\\ обучение\\b|\\bml\\b|\\bглубокое\\ обучение\\b|\\bdl\\b|\\bнейросети\\b|\\bстатистика\\b|\\bnlp\\b|\\bобработка\\ текста\\b|\\bанализ\\ данных\\b|\\bвизуализация\\b|\\betl\\b|\\bairflow\\b|\\bspark\\b|\\bkafka\\b|\\bdocker\\b|\\bдокер\\b|\\bkubernetes\\b|\\bкубер\\b|\\bmlflow\\b|\\bfastapi\\b|\\bdjango\\b|\\bflask\\b|\\bpower\\ bi\\b|\\btableau\\b|\\bexcel\\b|\\bjira\\b|\\bscrum\\b|\\bagile\\b|\\blinux\\b|\\bgit\\b|\\bci/cd\\b|\\bjenkins\\b|\\bgitlab\\ ci\\b|\\bgithub\\ actions\\b|\\bгитхаб\\ экшнс\\b|\\bterraform\\b|\\bansible\\b|\\baws\\b|\\bgcp\\b|\\bazure\\b|\\brest\\ api\\b|\\bpandas\\b|\\bnumpy\\b|\\bpytorch\\b|\\btensorflow\\b|\\bkeras\\b|\\bкоммуникация\\b|\\bуправление\\ проектами\\b|\\ba/b\\ тесты\\b|\\bab\\ тесты\\b|\\bproduct\\ management\\b|\\bleadership\\b|\\bteam\\ lead\\b|\\bтимлид\\b)"
+  }
+]

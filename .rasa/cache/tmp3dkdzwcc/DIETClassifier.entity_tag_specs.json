@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-experience_years",
+      "2": "I-experience_years",
+      "3": "L-experience_years",
+      "4": "U-experience_years",
+      "5": "B-role",
+      "6": "I-role",
+      "7": "L-role",
+      "8": "U-role",
+      "9": "B-salary_expectation",
+      "10": "I-salary_expectation",
+      "11": "L-salary_expectation",
+      "12": "U-salary_expectation",
+      "13": "B-skills",
+      "14": "I-skills",
+      "15": "L-skills",
+      "16": "U-skills",
+      "17": "B-work_format",
+      "18": "I-work_format",
+      "19": "L-work_format",
+      "20": "U-work_format",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-experience_years": 1,
+      "I-experience_years": 2,
+      "L-experience_years": 3,
+      "U-experience_years": 4,
+      "B-role": 5,
+      "I-role": 6,
+      "L-role": 7,
+      "U-role": 8,
+      "B-salary_expectation": 9,
+      "I-salary_expectation": 10,
+      "L-salary_expectation": 11,
+      "U-salary_expectation": 12,
+      "B-skills": 13,
+      "I-skills": 14,
+      "L-skills": 15,
+      "U-skills": 16,
+      "B-work_format": 17,
+      "I-work_format": 18,
+      "L-work_format": 19,
+      "U-work_format": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]
